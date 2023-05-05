@@ -1,10 +1,8 @@
 import { SSM } from '@aws-sdk/client-ssm';
-import * as path from 'path';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export async function getDbConfig(): Promise<TypeOrmModuleOptions> {
 	const ssm = new SSM({ region: 'us-east-1' });
-	const srcDir = path.join(__dirname, '..');
 
 	const parameters = [
 		'MainDatabaseHost',
